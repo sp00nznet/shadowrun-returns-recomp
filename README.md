@@ -19,7 +19,7 @@ copy of the game; the recompiler runs on your machine and writes into gitignored
 | Step | Steam 1.2.7 | GOG 1.2.7 |
 |---|---|---|
 | Version detection (Assembly-CSharp.dll SHA-256) | yes | yes |
-| Managed code lifted to C | 88847/88848 methods | 88847/88848 methods |
+| Managed code lifted to C | 88867/88868 methods | 88867/88868 methods |
 | Generated C compiles | yes | yes |
 | `mono.dll` links and Unity's player loads it | yes | builds; not run yet |
 | Main menu, headless (`-batchmode -nographics`) | yes: the log ends on the same `t=appview; cd=Main Menu` line as the original | not run yet |
@@ -35,9 +35,13 @@ callback structs because `Marshal.SizeOf` ignores `[MarshalAs]` layouts.
 
 ## Screenshots
 
-Main menu, Steam 1.2.7, 1280x720 windowed, recompiled `mono.dll`:
+Steam 1.2.7, 1280x720 windowed, recompiled `mono.dll`.
 
 ![Main menu](docs/screenshots/main-menu-steam.png)
+
+In game, Dead Man's Switch, loaded from an autosave:
+
+![In game](docs/screenshots/in-game-steam.png)
 
 ## Getting Started
 
@@ -77,7 +81,7 @@ GOG installer.
    dotnet build -c Release ..\netrecomp\tools\netrecomp
    dotnet ..\netrecomp\tools\netrecomp\bin\Release\net8.0\netrecomp.dll lift game\steam-1.2.7\Shadowrun_Data\Managed -o work\steam-1.2.7\gen
    ```
-   Expected: `lifted 88847/88848 methods (4413 icalls, 450/451 pinvokes) in 8.5s -> work\steam-1.2.7\gen`
+   Expected: `lifted 88867/88868 methods (4413 icalls, 450/451 pinvokes) in 8.5s -> work\steam-1.2.7\gen`
 4. Compile `mono.dll` (10-20 minutes on a desktop; it is ~120 MB of C):
    ```
    py -3 ..\netrecomp\tools\build.py --gen work\steam-1.2.7\gen --out work\steam-1.2.7\mono.dll
@@ -93,6 +97,7 @@ Usual trip-ups: `python` opening the Microsoft Store means the Store alias is on
 Shadowrun.exe                                   normal run (from game\<version>\)
 Shadowrun.exe -batchmode -nographics -logFile out.txt    headless: scripts run, no window
 set NR_DEBUG=1                                  print every managed throw and fault with a native stack
+set NR_INPUT=input.txt                          play from a command file (click X Y, key VK, ...), real mouse untouched
 ```
 
 ## Building from source
