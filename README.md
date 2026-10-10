@@ -14,7 +14,7 @@ copy of the game; the recompiler runs on your machine and writes into gitignored
 
 ## Status
 
-**v0.1.0-dev, pre-alpha. Boots to a working-looking main menu, windowed (Steam build).**
+**v0.1.0-dev, pre-alpha. In game: loads a save and plays (Steam build, Continue tested).**
 
 | Step | Steam 1.2.7 | GOG 1.2.7 |
 |---|---|---|
@@ -23,7 +23,8 @@ copy of the game; the recompiler runs on your machine and writes into gitignored
 | Generated C compiles | yes | yes |
 | `mono.dll` links and Unity's player loads it | yes | builds; not run yet |
 | Main menu, headless (`-batchmode -nographics`) | yes: the log ends on the same `t=appview; cd=Main Menu` line as the original | not run yet |
-| Main menu, windowed | yes: renders like the original (screenshot below); menu clicks not tested yet | not run yet |
+| Main menu, windowed | yes: renders like the original (screenshot below) | not run yet |
+| In game | yes: Continue loads the autosave, the party spawns with AI, click-to-move works; New Game and combat not tested yet | not run yet |
 
 The one method that doesn't lift is `WinFuncs.GetTouchPoint`, a P/Invoke for Windows touch
 input that takes a struct with a `bool` by value.
