@@ -1,0 +1,13 @@
+{
+  "_comment": "Known copies of the game, keyed by the SHA-256 of Shadowrun_Data/Managed/Assembly-CSharp.dll. Steam and GOG share the player, mono and corlib; only the three game assemblies differ.",
+  "c0e46e2240e26b7229a460c8ae207357ae016bf019c5b9ef5d278f49338f1999": {
+    "id": "steam-1.2.7",
+    "store": "steam",
+    "appid": "234650"
+  },
+  "cec8df786ca1a491e442f26627466e96f4d8fd5fd31f0c4d7c8a4daa05423bff": {
+    "id": "gog-1.2.7",
+    "store": "gog",
+    "installer_sha256": "8a7ba33661ed8a733ce123af03a49ede6ea0d62fb9d52e6576daea77ab7ce5d3"
+  }
+}

@@ -1,0 +1,31 @@
+# --- Game data and anything derived from it: never committed (REPO_RULES section 3) ---
+game/
+work/
+gen/
+decomp/
+setup_shadowrun_returns_*
+*.bin
+*.exe
+*.dll
+setup.log
+Play *.cmd
+
+# --- Toolkit clone made by Setup ---
+tools/netrecomp/
+
+# --- Build output ---
+build/
+obj/
+*.obj
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.mp4
+
+# --- Editor / OS ---
+.vs/
+.vscode/
+__pycache__/
+Thumbs.db
+.DS_Store
