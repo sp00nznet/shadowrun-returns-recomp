@@ -24,7 +24,7 @@ copy of the game; the recompiler runs on your machine and writes into gitignored
 | `mono.dll` links and Unity's player loads it | yes | builds; not run yet |
 | Main menu, headless (`-batchmode -nographics`) | yes: the log ends on the same `t=appview; cd=Main Menu` line as the original | not run yet |
 | Main menu, windowed | yes: renders like the original (screenshot below) | not run yet |
-| In game | yes: Continue loads the autosave, the party spawns with AI, click-to-move works; New Game and combat not tested yet | not run yet |
+| In game | yes: Continue loads the autosave, the party spawns with AI, click-to-move works. New Game works through character creation (text entry included) into the first scene, autosave, prop interactions. Dialogue and combat not confirmed yet | not run yet |
 
 The one method that doesn't lift is `WinFuncs.GetTouchPoint`, a P/Invoke for Windows touch
 input that takes a struct with a `bool` by value.
@@ -42,6 +42,14 @@ Steam 1.2.7, 1280x720 windowed, recompiled `mono.dll`.
 In game, Dead Man's Switch, loaded from an autosave:
 
 ![In game](docs/screenshots/in-game-steam.png)
+
+New Game, character creation:
+
+![Character creation](docs/screenshots/new-game-steam.png)
+
+First scene, interacting with a prop. Out of combat the bottom HUD is hidden by design (`HUDManager` moves it off screen in `FriendlyWorld`); it appears in combat.
+
+![Exploration](docs/screenshots/exploration-steam.png)
 
 ## Getting Started
 

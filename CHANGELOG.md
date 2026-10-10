@@ -17,3 +17,6 @@ versions: [SemVer](https://semver.org/).
   support (scene loads were unloading the UI atlases) and compiled `List<T>` field ctors.
 - In game on Steam 1.2.7: Continue loads the autosave (Dead Man's Switch, the Hive), the
   party spawns with its AI and click-to-move works. Screenshot in `docs/screenshots/`.
+- New Game on Steam 1.2.7: campaign select, difficulty, character creation (gender, race,
+  archetype, karma, etiquette, typed name), first scene loads and autosaves; prop text
+  popups work. Screenshots in `docs/screenshots/`.
