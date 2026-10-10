@@ -14,30 +14,29 @@ copy of the game; the recompiler runs on your machine and writes into gitignored
 
 ## Status
 
-**v0.1.0-dev, pre-alpha. Boots to the main menu (Steam build, verified headless).**
+**v0.1.0-dev, pre-alpha. Boots to a working-looking main menu, windowed (Steam build).**
 
 | Step | Steam 1.2.7 | GOG 1.2.7 |
 |---|---|---|
 | Version detection (Assembly-CSharp.dll SHA-256) | yes | yes |
-| Managed code lifted to C | 88432/88433 methods | 88432/88433 methods |
+| Managed code lifted to C | 88847/88848 methods | 88847/88848 methods |
 | Generated C compiles | yes | yes |
 | `mono.dll` links and Unity's player loads it | yes | builds; not run yet |
 | Main menu, headless (`-batchmode -nographics`) | yes: the log ends on the same `t=appview; cd=Main Menu` line as the original | not run yet |
-| Main menu, windowed | the game runs to the menu; no capture yet (see below) | not run yet |
+| Main menu, windowed | yes: renders like the original (screenshot below); menu clicks not tested yet | not run yet |
 
 The one method that doesn't lift is `WinFuncs.GetTouchPoint`, a P/Invoke for Windows touch
 input that takes a struct with a `bool` by value.
 
 Known gaps on the way to the menu (the game carries on past each): sockets have no
-internal calls yet (a `UdpClient` in a coroutine throws), Steamworks rejects two cloud
-callback structs because `Marshal.SizeOf` ignores `[MarshalAs]` layouts, and two
-constructors Unity invokes by reflection weren't compiled.
+internal calls yet (a `UdpClient` in a coroutine throws), and Steamworks rejects two cloud
+callback structs because `Marshal.SizeOf` ignores `[MarshalAs]` layouts.
 
 ## Screenshots
 
-None yet. `PrintWindow` and GDI capture of Unity 4's Direct3D 9 window come back black
-for the original `mono.dll` as well, so this is a capture problem, not a rendering one;
-offstage's recorder also produced no frames on this machine.
+Main menu, Steam 1.2.7, 1280x720 windowed, recompiled `mono.dll`:
+
+![Main menu](docs/screenshots/main-menu-steam.png)
 
 ## Getting Started
 
@@ -77,7 +76,7 @@ GOG installer.
    dotnet build -c Release ..\netrecomp\tools\netrecomp
    dotnet ..\netrecomp\tools\netrecomp\bin\Release\net8.0\netrecomp.dll lift game\steam-1.2.7\Shadowrun_Data\Managed -o work\steam-1.2.7\gen
    ```
-   Expected: `lifted 88432/88433 methods (4407 icalls, 450/451 pinvokes) in 8.0s -> work\steam-1.2.7\gen`
+   Expected: `lifted 88847/88848 methods (4413 icalls, 450/451 pinvokes) in 8.5s -> work\steam-1.2.7\gen`
 4. Compile `mono.dll` (10-20 minutes on a desktop; it is ~120 MB of C):
    ```
    py -3 ..\netrecomp\tools\build.py --gen work\steam-1.2.7\gen --out work\steam-1.2.7\mono.dll

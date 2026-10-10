@@ -11,4 +11,7 @@ versions: [SemVer](https://semver.org/).
   `Assembly-CSharp.dll`, copies it to `game\<version>\`, recompiles it with netrecomp,
   installs the built `mono.dll` into the copy and writes a launcher.
 - `tools/versions.json`: Steam 1.2.7 and GOG 1.2.7.
-- Both versions lift 88432/88433 methods and compile.
+- Both versions lift 88847/88848 methods and compile.
+- Steam 1.2.7 runs windowed to a main menu that renders like the original (logo, slide-in,
+  buttons, labels); screenshot in `docs/screenshots/`. Needed netrecomp's Unity liveness
+  support (scene loads were unloading the UI atlases) and compiled `List<T>` field ctors.
