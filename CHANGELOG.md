@@ -6,6 +6,7 @@ versions: [SemVer](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- `CONTRIBUTING.md`, for going public.
 - `Setup.cmd` and `tools/setup.py`: prerequisites (asking before installing), finds the game
   (Steam library, GOG install, or GOG offline installer), identifies it by the SHA-256 of
   `Assembly-CSharp.dll`, copies it to `game\<version>\`, recompiles it with netrecomp,
